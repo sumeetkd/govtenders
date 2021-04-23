@@ -1,4 +1,4 @@
-import requests, time
+import requests, time, re
 from random import randint
 from nicgep import url_handler
 from nicgep import active_tender_page
@@ -39,12 +39,13 @@ class tender_site:
         url_post = self.url
         s = requests.session()
         s.headers.update(headers)
-        while url_post:
-
-            url = self.u.create_url(url_post)
+        org_html = s.get(self.url).text
+        soup = BeautifulSoup(org_html, 'html.parser')
+        for elem in soup.find_all("a", id=re.compile(r"\bDirectLin\w+")):
+            print(elem.get('href'))
+            url = self.u.create_url(elem.get('href'))
             print(url)
             list_page = active_tender_page(url,s)
-
             for item in list_page.extract_tender_item():
                 #time.sleep(randint(0,2))
                 item_url = self.u.create_url(item)
@@ -53,10 +54,10 @@ class tender_site:
                 Unique = self.data.check_unique(entry)
                 if Unique:
                     tender_items.append(entry)
-            if Unique:
-                url_post = list_page.next_page()
-            else:
-                url_post = False
+#            if Unique:
+#                url_post = list_page.next_page()
+#            else:
+#                url_post = False
         self.data.save_data(tender_items)
         return print(self.name,'Completed')
 

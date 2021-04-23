@@ -12,7 +12,6 @@ class tender_item:
         self.url = url
         self.session = session
         html_content = session.get(url).text
-        print(html_content)
         self.soup = BeautifulSoup(html_content, 'html.parser')
 
     # Parsing of a standard tender item page to extract tender info. Any change in the website may force one to update this
