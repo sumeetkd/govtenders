@@ -1,0 +1,73 @@
+import requests, time
+from random import randint
+from nicgep import url_handler
+from nicgep import active_tender_page
+from nicgep import tender_item
+from data import data_entry
+from bs4 import BeautifulSoup
+import json
+import pandas as pd
+
+headers = {
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'}
+#name = 'Manipur'
+#base = 'https://manipurtenders.gov.in/'
+## base = 'https://etenders.gov.in'
+## url_at_base = '/eprocure/app?page=FrontEndLatestActiveTenders&service=page'
+#
+#url = 'nicgep/app?page=FrontEndLatestActiveTenders&service=page'
+#u = url_handler(base)
+#data = data_entry(name, base)
+
+class tender_site:
+
+    def __init__(self,name,base,url):
+        self.name = name
+        self.base = base
+        self.url  = url
+        self.data = data_entry(name)
+        self.u    = url_handler(base)
+
+
+    def collect_page(self):
+        """
+
+        :return:
+        """
+        Unique = True
+        tender_items = []
+        url_post = self.url
+        s = requests.session()
+        s.headers.update(headers)
+        while url_post:
+
+            url = self.u.create_url(url_post)
+            print(url)
+            list_page = active_tender_page(url,s)
+
+            for item in list_page.extract_tender_item():
+                #time.sleep(randint(0,2))
+                item_url = self.u.create_url(item)
+                item_page = tender_item(item_url,s)
+                entry = item_page.tender_information()
+                Unique = self.data.check_unique(entry)
+                if Unique:
+                    tender_items.append(entry)
+            if Unique:
+                url_post = list_page.next_page()
+            else:
+                url_post = False
+        self.data.save_data(tender_items)
+        return print(self.name,'Completed')
+
+
+if __name__ == "__main__":
+    """
+    Collect tender website url
+    """
+    tender_sites = 'collect_tenderinfo/tender_sites.json'
+    with open(tender_sites, 'r') as jsonfile:
+        tendersites_info = json.load(jsonfile)
+        for item in tendersites_info:
+            site = tender_site(item['name'],item['base'],item['url'])
+            site.collect_page()

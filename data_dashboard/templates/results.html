@@ -1,0 +1,8 @@
+<!doctype html>
+<title>Interesting Tenders</title>
+<body>
+{% for name, site in namelist|zip(results) %}
+<h1> {{ name | safe }} </h1>
+{{ site | safe }}
+{% endfor %}
+</body>
