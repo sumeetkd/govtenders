@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs Tender Updates at regular intervals
+Requires=tenderupdate.service
+
+[Timer]
+Unit=tenderupdate.service
+OnCalendar=Sun *-*-* 11:*:00
+
+[Install]
+WantedBy=timers.target
