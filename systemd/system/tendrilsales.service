@@ -1,0 +1,15 @@
+[Unit]
+Description=tendrilsales
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=sumeetkd
+Group=sumeetkd
+PATH=/home/sumeetkd/.pyenv/versions/tendril/bin/:$PATH
+WorkingDirectory=/home/sumeetkd/codes/Quazar/tendril_dox_ui
+ExecStart=/home/sumeetkd/.pyenv/versions/tendril/bin/python2.7 interface.py --s>
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
