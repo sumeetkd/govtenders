@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tenders Data Analysis &#8212; Tender Data Analysis 1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="Welcome to Tender Data Analysis’s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="tenders-data-analysis">
+<h1>Tenders Data Analysis<a class="headerlink" href="#tenders-data-analysis" title="Permalink to this headline">¶</a></h1>
+<p>Testing the documentation
+The main class you need to care about is crawler.main.Crawler</p>
+<span class="target" id="module-an_example_pypi_project"></span><p>A pypi demonstration vehicle.</p>
+<span class="target" id="module-an_example_pypi_project.useful_1"></span><span class="target" id="module-useful_1"></span><dl class="py class">
+<dt class="sig sig-object py" id="an_example_pypi_project.useful_1.MyPublicClass">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">an_example_pypi_project.useful_1.</span></span><span class="sig-name descname"><span class="pre">MyPublicClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">foo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'baz'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#an_example_pypi_project.useful_1.MyPublicClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>We use this as a public class example class.</p>
+<p>You never call this class before calling <a class="reference internal" href="#an_example_pypi_project.useful_1.public_fn_with_sphinxy_docstring" title="an_example_pypi_project.useful_1.public_fn_with_sphinxy_docstring"><code class="xref py py-func docutils literal notranslate"><span class="pre">public_fn_with_sphinxy_docstring()</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An example of intersphinx is this: you <strong>cannot</strong> use <code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code> on this class.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="an_example_pypi_project.useful_1.MyPublicClass.get_foobar">
+<span class="sig-name descname"><span class="pre">get_foobar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">foo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bar</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#an_example_pypi_project.useful_1.MyPublicClass.get_foobar" title="Permalink to this definition">¶</a></dt>
+<dd><p>This gets the foobar</p>
+<p>This really should have a full function definition, but I am too lazy.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">get_foobar</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">get_foobar</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="go">ab</span>
+</pre></div>
+</div>
+<p>Isn’t that what you want?</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="an_example_pypi_project.useful_1.public_fn_with_googley_docstring">
+<span class="sig-prename descclassname"><span class="pre">an_example_pypi_project.useful_1.</span></span><span class="sig-name descname"><span class="pre">public_fn_with_googley_docstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#an_example_pypi_project.useful_1.public_fn_with_googley_docstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function does something.</p>
+<dl>
+<dt>Args:</dt><dd><p>name (str):  The name to use.</p>
+</dd>
+<dt>Kwargs:</dt><dd><p>state (bool): Current state to be in.</p>
+</dd>
+<dt>Returns:</dt><dd><p>int.  The return code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0 -- Success!
+1 -- No good.
+2 -- Try again.
+</pre></div>
+</div>
+</dd>
+<dt>Raises:</dt><dd><p>AttributeError, KeyError</p>
+</dd>
+</dl>
+<p>A really great idea.  A way you might use me is</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span> <span class="n">public_fn_with_googley_docstring</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>BTW, this always returns 0.  <strong>NEVER</strong> use with <a class="reference internal" href="#an_example_pypi_project.useful_1.MyPublicClass" title="an_example_pypi_project.useful_1.MyPublicClass"><code class="xref py py-class docutils literal notranslate"><span class="pre">MyPublicClass</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="an_example_pypi_project.useful_1.public_fn_with_sphinxy_docstring">
+<span class="sig-prename descclassname"><span class="pre">an_example_pypi_project.useful_1.</span></span><span class="sig-name descname"><span class="pre">public_fn_with_sphinxy_docstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#an_example_pypi_project.useful_1.public_fn_with_sphinxy_docstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function does something.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str.</em>) – The name to use.</p></li>
+<li><p><strong>state</strong> (<em>bool.</em>) – Current state to be in.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>int – the return code.</p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p>AttributeError, KeyError</p>
+</dd>
+</dl>
+</dd></dl>
+
+<span class="target" id="module-data_dashboard.__main__"></span><dl class="py function">
+<dt class="sig sig-object py" id="data_dashboard.__main__.load_site_data">
+<span class="sig-prename descclassname"><span class="pre">data_dashboard.__main__.</span></span><span class="sig-name descname"><span class="pre">load_site_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#data_dashboard.__main__.load_site_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Testing doc strings</p>
+</dd></dl>
+
+<span class="target" id="module-collect_tenderinfo.__init__"></span></div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Tender Data Analysis</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tenders Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to Tender Data Analysis’s documentation!</a></li>
+      <li>Next: <a href="install.html" title="next chapter">Installation</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Sumeet KD.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/code.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
