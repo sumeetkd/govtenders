@@ -42,12 +42,10 @@ class tender_site:
         org_html = s.get(self.url).text
         soup = BeautifulSoup(org_html, 'html.parser')
         for elem in soup.find_all("a", id=re.compile(r"\bDirectLin\w+")):
-            print(elem.get('href'))
             url = self.u.create_url(elem.get('href'))
-            print(url)
             list_page = active_tender_page(url,s)
             for item in list_page.extract_tender_item():
-                #time.sleep(randint(0,2))
+                time.sleep(randint(0,30))
                 item_url = self.u.create_url(item)
                 item_page = tender_item(item_url,s)
                 entry = item_page.tender_information()
