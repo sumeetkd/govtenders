@@ -34,24 +34,26 @@ class tender_site:
 
         :return:
         """
-        Unique = True
         tender_items = []
         url_post = self.url
-        s = requests.session()
-        s.headers.update(headers)
-        org_html = s.get(self.url).text
+        org_html = requests.get(self.url).text
         soup = BeautifulSoup(org_html, 'html.parser')
         for elem in soup.find_all("a", id=re.compile(r"\bDirectLin\w+")):
+            s = requests.session()
+            s.headers.update(headers)
             url = self.u.create_url(elem.get('href'))
             list_page = active_tender_page(url,s)
-            for item in list_page.extract_tender_item():
-                time.sleep(randint(0,30))
-                item_url = self.u.create_url(item)
-                item_page = tender_item(item_url,s)
-                entry = item_page.tender_information()
-                Unique = self.data.check_unique(entry)
-                if Unique:
-                    tender_items.append(entry)
+            Unique = True
+            while Unique:
+                for item in list_page.extract_tender_item():
+#                    time.sleep(randint(0,3))
+                    item_url = self.u.create_url(item)
+                    item_page = tender_item(item_url,s)
+                    entry = item_page.tender_information()
+                    Unique = self.data.check_unique(entry) and (not (entry in tender_items))
+                    if Unique:
+                        tender_items.append(entry)
+            print("End for Organization")
 #            if Unique:
 #                url_post = list_page.next_page()
 #            else:
@@ -64,7 +66,7 @@ if __name__ == "__main__":
     """
     Collect tender website url
     """
-    tender_sites = 'collect_tenderinfo/tender_sites.json'
+    tender_sites = 'src/collect_tenderinfo/tender_sites.json'
     with open(tender_sites, 'r') as jsonfile:
         tendersites_info = json.load(jsonfile)
         for item in tendersites_info:

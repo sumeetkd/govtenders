@@ -6,7 +6,7 @@ class data_entry:
 
     def __init__(self ,name):
         self.name = name
-        self.data_dir = "collect_tenderinfo/data/" + self.name
+        self.data_dir = "data/raw/" + self.name
         self.filename = (datetime.datetime.now()).strftime('%Y%m%d') + '.json'
         self.data = self.load_latest()
 
