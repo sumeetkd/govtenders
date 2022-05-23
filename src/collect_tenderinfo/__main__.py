@@ -54,10 +54,6 @@ class tender_site:
                     if Unique:
                         tender_items.append(entry)
             print("End for Organization")
-#            if Unique:
-#                url_post = list_page.next_page()
-#            else:
-#                url_post = False
         self.data.save_data(tender_items)
         return print(self.name,'Completed')
 
