@@ -3,11 +3,20 @@ import mysql.connector
 class tenderdb:
 
 # [TODO] Change sql password
-    def __init__(self):
+    def __enter__(self):
         self.cnx = mysql.connector.connect(user='sumeetkd', password='test123',
-    	host='localhost',
-    	database='mydb')
+                                      host='localhost',
+                                      database='mydb')
+        return self.cnx
 
+    def __exit__(self, type, value, traceback):
+        self.cnx.close()
+
+class sqlupdater:
+
+
+    def __init__(self, cnctn):
+        self.cnx = cnctn
 
     def insertsql(self, entry):
         cursor = self.cnx.cursor()
@@ -79,4 +88,3 @@ class tenderdb:
         cursor.execute(clean_temp)
         cursor.close()
         self.cnx.commit()
-        self.cnx.close()

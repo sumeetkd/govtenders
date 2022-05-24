@@ -3,7 +3,8 @@ import json
 import src.sqlconnection
 
 
-sqldb = src.sqlconnection.tenderdb()
+sqlconnection = src.sqlconnection.tenderdb
+sqlupdater = src.sqlconnection.sqlupdater
 
 if __name__ == "__main__":
 	"""
@@ -17,11 +18,13 @@ if __name__ == "__main__":
 	with open(tender_sites, 'r') as jsonfile:
 		tendersites_info = json.load(jsonfile)
 		for item in tendersites_info:
-			website = choose_site_class(item['name'],item['base'],item['url']).load()
-			for page in website.crawler.tenderpage_url_generator():
-				entry = website.crawler.tenderpage_parser(page)
+			with sqlconnection() as connection:
+				writer = sqlupdater(connection)
+				website = choose_site_class(item['name'],item['base'],item['url']).load()
+				for page in website.crawler.tenderpage_url_generator():
+					entry = website.crawler.tenderpage_parser(page)
 #			print(entry)
-				sqldb.insertsql(entry)
-			sqldb.updatedb()
-			print("End for Website")
+					writer.insertsql(entry)
+				writer.updatedb()
+				print("End for Website")
 		print("End for all Tenders")

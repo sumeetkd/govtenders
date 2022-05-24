@@ -68,7 +68,7 @@ class NicgepParser:
             'TenderType': self.string_entry('Tender Type'),
             'FormofContract': self.string_entry('Form Of Contract'),
             'TenderCategory': self.string_entry('Tender Category'),
-            'PaymentMode': self.string_entry('Payment Mode'),
+            'PaymentMode': self.string_entry('Payment Mode')[:9],
             'FeePayTo': self.string_entry('Fee Payable To'),
             'FeePayAt': self.string_entry('Fee Payable At'),
             'EMDFeeType': self.string_entry('EMD Fee Type '),
