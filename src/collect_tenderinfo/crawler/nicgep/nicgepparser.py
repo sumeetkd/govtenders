@@ -9,12 +9,13 @@ class NicgepParser:
         self.base = url
         self.data = data
 
-    def string_entry(self, keyname):
+    def string_entry(self, keyname, sqllength=None):
         strvalue = self.data.get(keyname, None)
-        if (strvalue is not None) & (strvalue in ['NA', 'Not Applicable']):
+#       if (strvalue is not None) & (strvalue in ['NA', 'Not Applicable']):
+        if (strvalue in [None, 'NA', 'Not Applicable']):
             return None
         else:
-            return strvalue
+            return strvalue[0:sqllength]
 
     def int_entry(self, keyname):
         intvalue = self.data.get(keyname, None)
@@ -68,7 +69,7 @@ class NicgepParser:
             'TenderType': self.string_entry('Tender Type'),
             'FormofContract': self.string_entry('Form Of Contract'),
             'TenderCategory': self.string_entry('Tender Category'),
-            'PaymentMode': self.string_entry('Payment Mode')[:9],
+            'PaymentMode': self.string_entry('Payment Mode',10),
             'FeePayTo': self.string_entry('Fee Payable To'),
             'FeePayAt': self.string_entry('Fee Payable At'),
             'EMDFeeType': self.string_entry('EMD Fee Type '),
