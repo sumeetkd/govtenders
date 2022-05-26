@@ -1,9 +1,0 @@
-<!doctype html>
-<title>Tenders by Categories</title>
-<p style="text-align:center;"><img src="{{url_for('static', filename='barplot.png')}}" alt="Bar Plot for categories"></p>
-<body>
-{% for name, site in namelist|zip(results) %}
-<h1> {{ name | safe }} </h1>
-{{ site | safe }}
-{% endfor %}
-</body>

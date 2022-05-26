@@ -3,7 +3,7 @@ import json
 import src.sqlconnection
 
 
-sqlconnection = src.sqlconnection.tenderdb
+sqlconnection = src.sqlconnection.connector
 sqlupdater = src.sqlconnection.sqlupdater
 
 if __name__ == "__main__":

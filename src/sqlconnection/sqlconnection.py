@@ -1,6 +1,6 @@
 import mysql.connector
 
-class tenderdb:
+class connector:
 
 # [TODO] Change sql password
     def __enter__(self):
@@ -88,3 +88,26 @@ class sqlupdater:
         cursor.execute(clean_temp)
         cursor.close()
         self.cnx.commit()
+
+class sqlquery:
+
+    def __init__(self, cnctn):
+        self.cnx = cnctn
+
+    def searchquery(self, querydict):
+        cursor = self.cnx.cursor()
+        query = ("SELECT Webid, TenderSiteURL, Title, WorkDescrip, OrgChain, Refno, TenderType, BidSubEndDate, Category, SubCategory " 
+                 "FROM Tenders WHERE Title LIKE %(searchfor)s OR WorkDescrip LIKE %(searchfor)s ")
+        cursor.execute(query,querydict)
+        rows = cursor.fetchall()
+        cursor.close()
+        return rows
+
+    def categorydata(self):
+        cursor = self.cnx.cursor()
+        query = ("SELECT Webid, TenderSiteURL, Title, WorkDescrip, OrgChain, Refno, TenderType, BidSubEndDate, Category, SubCategory FROM Tenders WHERE Category= %(Category)s")
+        querydict = {'Category':'Laboratory and scientific equipment '}
+        cursor.execute(query,querydict)
+        rows = cursor.fetchall()
+        cursor.close()
+        return rows

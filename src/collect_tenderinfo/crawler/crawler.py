@@ -1,4 +1,5 @@
 from .nicgep import nicgepcodes
+from .nicgepeproc import nicgepcodeseproc
 
 class choose_site_class:
 	"""
@@ -11,9 +12,9 @@ class choose_site_class:
 
 	def load(self):
 		match self.name:
-			case 'Central website':
+			case 'Central_Institute_etender':
 				return nicgepcodes(self.name, self.base, self.url)
-			case 'Manipur Tenders':
+			case 'Manipur_Tenders':
 				return nicgepcodes(self.name, self.base, self.url)
-			case _:
-				return nicgepcodes(self.name, self.base, self.url)
+			case 'Central_Institute_eprocure':
+				return nicgepcodeseproc(self.name, self.base, self.url)

@@ -1,9 +1,11 @@
-from flask import Flask, render_template
-import pandas as pd
-from src.collect_tenderinfo.data import data_entry
+from flask import Flask, render_template, request
+import src.sqlconnection
 import json
 app = Flask(__name__)
 app.jinja_env.filters['zip'] = zip
+
+sqlconnection = src.sqlconnection.connector
+sqlquery = src.sqlconnection.sqlquery
 
 def load_site_data():
     """Testing doc strings
@@ -20,33 +22,31 @@ def load_site_data():
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/search/<term>')
-def search_results(term):
-    results = []
-    names   = []
-    for name, data in load_site_data():
-        df = pd.DataFrame.from_dict(data)
-        filtereddf = df[df['Title'].str.contains(term, case=False, regex=True)]
-        site_results = filtereddf[
-            ['Organisation Chain', 'Tender ID', 'Tender Type', 'Title', 'Work Description', 'Bid Submission End Date',
-             'Tender Value in ₹ ', 'EMD Amount in ₹ ']].to_html()
-        results.append(site_results)
-        names.append(name)
-    return render_template('results.html',results=results, namelist = names)
+@app.route('/labequipment')
+def lab_equipment():
+    with sqlconnection() as connection:
+        rows = sqlquery(connection).categorydata()
+    return render_template('labequipment.html', result = rows)
 
-@app.route('/categories/<term>')
-def product_category(term):
-    results = []
-    names   = []
-    for name, data in load_site_data():
-        df = pd.DataFrame.from_dict(data)
-        filtereddf = df[df['Title'].str.contains(term, case=False, regex=True)]
-        site_results = filtereddf[
-            ['Organisation Chain', 'Tender ID', 'Tender Type', 'Title', 'Work Description', 'Bid Submission End Date',
-             'Tender Value in ₹ ', 'EMD Amount in ₹ ']].to_html()
-        results.append(site_results)
-        names.append(name)
-    return render_template('product_category.html',results=results, namelist = names)
+
+@app.route('/search')
+def search_form():
+    """
+    :return:
+    """
+    return render_template('search.html')
+
+@app.route('/search_results', methods = ['POST'])
+def search_results():
+    if request.method == 'POST':
+        querydict = request.form.to_dict()
+        querydict['searchfor'] = '%' + querydict['searchfor'] + '%'
+        print(querydict['searchfor'])
+        with sqlconnection() as connection:
+            rows = sqlquery(connection).searchquery(querydict)
+    return render_template('results.html', result = rows)
+
+
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5000)

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Search through the Title and Work Description of tenders</h3>
+<head>
+<title>Search form</title>
+    <html lang="en">
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form action = "/search_results" method = "POST">
+        <div class="form-group">
+         <p>Search Term<input type = "text" class="form-control" name = "searchfor" /></p>
+        </div>
+         <p><input class="btn btn-primary" type = "submit" value = "submit" /></p>
+    </form>
+
+{% endblock %}
