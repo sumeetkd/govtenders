@@ -15,6 +15,6 @@ class choose_site_class:
 			case 'Central_Institute_etender':
 				return nicgepcodes(self.name, self.base, self.url)
 			case 'Manipur_Tenders':
-				return nicgepcodes(self.name, self.base, self.url)
+				return nicgepcodeseproc(self.name, self.base, self.url)
 			case 'Central_Institute_eprocure':
 				return nicgepcodeseproc(self.name, self.base, self.url)

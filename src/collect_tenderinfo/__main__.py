@@ -1,3 +1,5 @@
+import time
+
 from crawler import choose_site_class
 import json
 import src.sqlconnection

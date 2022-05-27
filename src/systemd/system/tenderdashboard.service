@@ -7,7 +7,7 @@ Type=simple
 User=sumeetkd
 Group=sumeetkd
 WorkingDirectory=/home/sumeetkd/codes/Quazar/eproc/
-ExecStart=/home/sumeetkd/codes/Quazar/eproc/tenders/bin/python3 data_dashboard --s>
+ExecStart=/home/sumeetkd/codes/Quazar/eproc/tenders/bin/python3 src/data_dashboard --s>
 Environment="PYTHONPATH=$PYTHONPATH:/home/sumeetkd/codes/Quazar/eproc"
 
 [Install]
