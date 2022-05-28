@@ -12,10 +12,37 @@
       h2 {color: red;}
     </style>
   </head>
-<!--  <script>
-       document.write(window.location.hostname)
-     </script>
-  -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SciEqservices</a>
+    </div>
+    <ul id="Nav" class="nav navbar-nav">
+<!--
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+-->
+    </ul>
+  </div>
+</nav>
+<script>
+var myStringArray = [{name:'Search', url: ":5000/search"}, {name:'Labequipment', url:":5000/labequipment"}, {name:'Visualization', url: ":8052"}, {name:'Quote Generator', url: ":5124/quotation_form"}];
+var arrayLength = myStringArray.length;
+for (var i = 0; i < arrayLength; i++) {
+    console.log(myStringArray[i]);
+    //Do something
+    var ulist = document.getElementById("Nav");
+    var newItem = document.createElement("li");
+    var a = document.createElement("a");
+    a.textContent = myStringArray[i].name;
+    var base = window.location.hostname
+    let front = "http://"
+    a.setAttribute('href', front.concat(base,myStringArray[i].url));
+    newItem.appendChild(a);
+    ulist.appendChild(newItem);
+}
+</script>
   <body>
     <div class="container">
       <h2>Services</h2>

@@ -112,3 +112,17 @@ class sqlquery:
         rows = cursor.fetchall()
         cursor.close()
         return rows
+
+    def revenueplotquery(self):
+        cursor = self.cnx.cursor()
+        query = ("select substring_index(OrgChain,'||',1) as mainorg, "
+                    "CASE WHEN Value IS NULL then (EMDamount*100)/2 else Value end as value "
+                    "from Tenders "
+                    "where value != 0 "
+                    "group by mainorg "
+                    "order by value DESC "
+                    "limit 20")
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        cursor.close()
+        return rows
