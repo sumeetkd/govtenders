@@ -47,6 +47,10 @@ def search_results():
     return render_template('results.html', result = rows)
 
 
+@app.route('/visualization')
+def visualization():
+    return render_template('visualization.html')
+
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port=5000)
