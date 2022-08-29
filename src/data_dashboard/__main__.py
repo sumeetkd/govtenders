@@ -24,6 +24,9 @@ def hello_world():
 
 @app.route('/labequipment')
 def lab_equipment():
+    """
+    Create a page to show a particular category
+    """
     with sqlconnection() as connection:
         rows = sqlquery(connection).categorydata()
     return render_template('labequipment.html', result = rows)
