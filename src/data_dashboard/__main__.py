@@ -22,14 +22,21 @@ def load_site_data():
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/labequipment')
+@app.route('/labequipment', methods = ['GET', 'POST'])
 def lab_equipment():
     """
     Create a page to show a particular category
     """
-    with sqlconnection() as connection:
-        rows = sqlquery(connection).categorydata()
-    return render_template('labequipment.html', result = rows)
+    if request.method == 'POST':
+       result = request.form.to_dict()
+       print(result)
+       with sqlconnection() as connection:
+            rows = sqlquery(connection).categorydata(result)
+            return render_template('labequipment.html', result = rows)
+    else:
+        with sqlconnection() as connection:
+            rows = sqlquery(connection).categorydata()
+            return render_template('labequipment.html', result = rows)
 
 
 @app.route('/search')

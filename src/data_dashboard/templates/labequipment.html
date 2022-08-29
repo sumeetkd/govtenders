@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <h3>Tenders in the category Lab and Scientific equipment</h3>
+<form action = "/labequipment" method = "POST">
+     <p>Category name<input type = "text" name = "Category" value = "Laboratory and scientific equipment "/></p>
+     <p><input type = "submit" value = "submit" /></p>
+</form>
+
 <div class="container">
     <table class="table">
         <tr>

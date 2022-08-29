@@ -104,11 +104,11 @@ class sqlquery:
         cursor.close()
         return rows
 
-    def categorydata(self):
+    def categorydata(self, querydata={'Category':'Laboratory and scientific equipment '}):
         cursor = self.cnx.cursor()
         query = ("SELECT Webid, TenderSiteURL, Title, WorkDescrip, OrgChain, Refno, TenderType, BidSubEndDate, Category, SubCategory FROM Tenders WHERE Category= %(Category)s")
-        querydict = {'Category':'Laboratory and scientific equipment '}
-        cursor.execute(query,querydict)
+        #querydict = {'Category':'Laboratory and scientific equipment '}
+        cursor.execute(query, querydata)
         rows = cursor.fetchall()
         cursor.close()
         return rows
