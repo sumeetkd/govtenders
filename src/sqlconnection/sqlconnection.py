@@ -1,4 +1,5 @@
 import mysql.connector
+import datetime
 
 class connector:
 
@@ -104,10 +105,9 @@ class sqlquery:
         cursor.close()
         return rows
 
-    def categorydata(self, querydata={'Category':'Laboratory and scientific equipment '}):
+    def categorydata(self, querydata={'Category':'Laboratory and scientific equipment ', 'BidSubEndDate': datetime.date.today().strftime('%Y-%m-%d') }):
         cursor = self.cnx.cursor()
-        query = ("SELECT Webid, TenderSiteURL, Title, WorkDescrip, OrgChain, Refno, TenderType, BidSubEndDate, Category, SubCategory FROM Tenders WHERE Category= %(Category)s")
-        #querydict = {'Category':'Laboratory and scientific equipment '}
+        query = ("SELECT Webid, TenderSiteURL, Title, WorkDescrip, OrgChain, Refno, TenderType, BidSubEndDate, Category, SubCategory FROM Tenders WHERE Category= %(Category)s AND BidSubEndDate >= %(BidSubEndDate)s")
         cursor.execute(query, querydata)
         rows = cursor.fetchall()
         cursor.close()

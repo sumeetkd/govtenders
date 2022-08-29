@@ -29,7 +29,6 @@ def lab_equipment():
     """
     if request.method == 'POST':
        result = request.form.to_dict()
-       print(result)
        with sqlconnection() as connection:
             rows = sqlquery(connection).categorydata(result)
             return render_template('labequipment.html', result = rows)
