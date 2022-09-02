@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <h3>Tenders in the category Lab and Scientific equipment</h3>
+
 <form action = "/labequipment" method = "POST">
   <div class="form-group">
     <label for="category">Category Name</label>
@@ -8,10 +9,17 @@
   </div>
   <div class="form-group">
     <label for="bidsubenddate">Bid Submission End date </label>
-    <input type = "date" class="form=control" id="bidsubenddate" name = "BidSubEndDate" value= 2022-08-29 />
+    <input type = "date" class="form=control" id="bidsubenddate" name = "BidSubEndDate" />
   </div>
      <p><input type = "submit" class = "btn btn-primary" value = "submit" /></p>
 </form>
+<script>
+date = new Date();
+year = date.getFullYear();
+month = ("0" + (date.getMonth()+1)).slice(-2);
+  day = ("0" + date.getDate()).slice(-2);
+document.getElementById("bidsubenddate").value =  year+"-"+month+"-"+day;
+</script>
 
 <div class="container">
     <table class="table">
