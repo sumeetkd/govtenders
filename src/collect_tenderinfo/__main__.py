@@ -21,6 +21,7 @@ if __name__ == "__main__":
 		tendersites_info = json.load(jsonfile)
 		for item in tendersites_info:
 			with sqlconnection() as connection:
+				print("Start of Website")
 				writer = sqlupdater(connection)
 				website = choose_site_class(item['name'],item['base'],item['url']).load()
 				for page in website.crawler.tenderpage_url_generator():
