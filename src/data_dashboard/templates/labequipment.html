@@ -2,9 +2,15 @@
 {% block content %}
 <h3>Tenders in the category Lab and Scientific equipment</h3>
 <form action = "/labequipment" method = "POST">
-  <p>Category name<input type = "text" name = "Category" value = "Laboratory and scientific equipment "/></p>
-  <p>Bid Submission End date <input type = "date" name = "BidSubEndDate" value= 2022-08-29 /></p>
-     <p><input type = "submit" value = "submit" /></p>
+  <div class="form-group">
+    <label for="category">Category Name</label>
+      <input type = "text" class = "form-control" id="category" name = "Category" value = "Laboratory and scientific equipment "/>
+  </div>
+  <div class="form-group">
+    <label for="bidsubenddate">Bid Submission End date </label>
+    <input type = "date" class="form=control" id="bidsubenddate" name = "BidSubEndDate" value= 2022-08-29 />
+  </div>
+     <p><input type = "submit" class = "btn btn-primary" value = "submit" /></p>
 </form>
 
 <div class="container">
