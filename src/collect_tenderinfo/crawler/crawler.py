@@ -12,7 +12,7 @@ class choose_site_class:
 
 	def load(self):
 		match self.name:
-			case 'Central_Institute_etender':
+			case 'Central_Institute_etenders':
 				return nicgepcodes(self.name, self.base, self.url)
 			case 'Manipur_Tenders':
 				return nicgepcodeseproc(self.name, self.base, self.url)
